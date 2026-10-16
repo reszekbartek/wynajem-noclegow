@@ -1,0 +1,43 @@
+name: Deploy WordPress to InfinityFree
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'wp-content/themes/motyw/**'
+      - 'wp-content/plugins/snippet-plugin/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy theme
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./wp-content/themes/motyw/
+          server-dir: /htdocs/wp-content/themes/motyw/
+          dry-run: true
+
+      - name: Deploy plugin
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./wp-content/plugins/snippet-plugin/
+          server-dir: /htdocs/wp-content/plugins/snippet-plugin/
+          dry-run: true
