@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require get_theme_file_path( 'inc/dane-osrodka.php' );
+require get_theme_file_path( 'inc/customizer.php' );
 require get_theme_file_path( 'inc/konfiguracja.php' );
 require get_theme_file_path( 'inc/nawigacja.php' );
 

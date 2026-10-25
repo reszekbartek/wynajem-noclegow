@@ -17,7 +17,8 @@ Struktura:
 
 * style.css - nagłówek motywu (nazwa, wersja, wymagania)
 * functions.php - obsługiwane funkcje WordPressa, menu, dołączanie stylów i skryptów
-* inc/dane-osrodka.php - dane ośrodka (adres, telefony, e-mail) w jednym miejscu
+* inc/dane-osrodka.php - dane ośrodka (adres, telefony, e-mail) w jednym miejscu, z wartościami domyślnymi
+* inc/customizer.php - sekcja "Dane ośrodka" w Wygląd > Dostosuj
 * inc/konfiguracja.php - konfiguracja przy włączeniu motywu
 * inc/nawigacja.php - link do strony rezerwacji i menu domyślne
 * header.php, footer.php - nagłówek i stopka wspólne dla wszystkich stron
@@ -38,6 +39,14 @@ Po włączeniu motyw:
 * tworzy "Menu główne" i przypisuje je do lokalizacji menu, jeśli żadne nie jest przypisane.
 
 Istniejące strony i menu pozostają bez zmian, więc motyw można bezpiecznie włączać ponownie.
+
+== Dane ośrodka ==
+
+Nazwę, adres, telefony, e-mail, numer konta i adres Facebooka zmienia się w panelu:
+Wygląd > Dostosuj > Dane ośrodka. Zmiana jest widoczna jednocześnie w nagłówku, stopce
+i na stronie Kontakt. Pola są wypełnione wartościami domyślnymi z inc/dane-osrodka.php,
+a wyczyszczenie pola przywraca wartość domyślną. Niepoprawny e-mail, numer telefonu lub adres
+strony nie zostanie zapisany.
 
 == Nagłówek ==
 
