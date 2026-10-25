@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require get_theme_file_path( 'inc/dane-osrodka.php' );
 require get_theme_file_path( 'inc/konfiguracja.php' );
+require get_theme_file_path( 'inc/nawigacja.php' );
 
 // -------------------------------------------------------------
 // 1. FUNKCJE MOTYWU I LOKALIZACJE MENU

@@ -18,6 +18,8 @@
 	--kolor-akcent: #2f6b3f;
 	--kolor-akcent-ciemny: #234f2f;
 	--kolor-obramowanie: #d9e0d6;
+	--kolor-rezerwacja: #c2540a;
+	--kolor-rezerwacja-ciemny: #9e4408;
 
 	--czcionka: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 	--szerokosc: 1100px;
@@ -72,7 +74,9 @@ h3 {
 	padding: 0 var(--odstep);
 }
 
+/* Nagłówek: najpierw wersja na telefon, od 768 px wersja na komputer. */
 .naglowek {
+	background: var(--kolor-tlo);
 	border-bottom: 1px solid var(--kolor-obramowanie);
 }
 
@@ -81,34 +85,99 @@ h3 {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-}
-
-.naglowek__nazwa {
-	font-size: 1.25rem;
-	font-weight: 700;
-	color: var(--kolor-tekst);
-	text-decoration: none;
+	gap: 0 1rem;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
 }
 
 .custom-logo {
 	display: block;
-	max-height: 80px;
 	width: auto;
+	height: 56px;
+}
+
+/* Przycisk "hamburger": widoczny tylko na telefonie i tylko z włączonym JavaScriptem. */
+.naglowek__przycisk-menu {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	border: 1px solid var(--kolor-obramowanie);
+	border-radius: 4px;
+	background: none;
+	cursor: pointer;
+}
+
+.js .naglowek__przycisk-menu {
+	display: inline-flex;
+}
+
+.naglowek__ikona-menu,
+.naglowek__ikona-menu::before,
+.naglowek__ikona-menu::after {
+	display: block;
+	width: 22px;
+	height: 2px;
+	background: var(--kolor-tekst);
+	transition: transform 0.2s ease;
+}
+
+.naglowek__ikona-menu {
+	position: relative;
+}
+
+.naglowek__ikona-menu::before,
+.naglowek__ikona-menu::after {
+	content: "";
+	position: absolute;
+	left: 0;
+}
+
+.naglowek__ikona-menu::before {
+	top: -7px;
+}
+
+.naglowek__ikona-menu::after {
+	top: 7px;
+}
+
+/* Po rozwinięciu menu ikona zmienia się w "X". */
+.naglowek__przycisk-menu[aria-expanded="true"] .naglowek__ikona-menu {
+	background: transparent;
+}
+
+.naglowek__przycisk-menu[aria-expanded="true"] .naglowek__ikona-menu::before {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.naglowek__przycisk-menu[aria-expanded="true"] .naglowek__ikona-menu::after {
+	transform: translateY(-7px) rotate(-45deg);
+}
+
+.nawigacja {
+	flex-basis: 100%;
+}
+
+.js .nawigacja {
+	display: none;
+}
+
+.js .naglowek--otwarte .nawigacja {
+	display: block;
 }
 
 .nawigacja__lista {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem 1.5rem;
-	margin: 0;
+	margin: 0.75rem 0 0;
 	padding: 0;
 	list-style: none;
 }
 
 .nawigacja__lista a {
+	display: block;
+	padding: 0.75rem 0;
+	border-top: 1px solid var(--kolor-obramowanie);
 	color: var(--kolor-tekst);
 	text-decoration: none;
 }
@@ -117,6 +186,93 @@ h3 {
 .nawigacja__lista a:focus,
 .nawigacja__lista .current-menu-item > a {
 	color: var(--kolor-akcent);
+}
+
+.nawigacja__lista .current-menu-item > a {
+	font-weight: 600;
+}
+
+.nawigacja__dodatki {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem 1.25rem;
+	padding: 0.75rem 0 0.25rem;
+	border-top: 1px solid var(--kolor-obramowanie);
+}
+
+.nawigacja__telefon {
+	font-weight: 600;
+	color: var(--kolor-tekst);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.nawigacja__telefon:hover,
+.nawigacja__telefon:focus {
+	color: var(--kolor-akcent);
+}
+
+@media (min-width: 768px) {
+	.naglowek__wnetrze {
+		flex-wrap: nowrap;
+	}
+
+	.custom-logo {
+		height: 68px;
+	}
+
+	.js .naglowek__przycisk-menu {
+		display: none;
+	}
+
+	.nawigacja,
+	.js .nawigacja {
+		display: flex;
+		flex-basis: auto;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 0.5rem 2rem;
+	}
+
+	.nawigacja__lista {
+		display: flex;
+		gap: 1.5rem;
+		margin: 0;
+	}
+
+	.nawigacja__lista a {
+		padding: 0.5rem 0;
+		border-top: 0;
+		border-bottom: 2px solid transparent;
+	}
+
+	.nawigacja__lista .current-menu-item > a {
+		border-bottom-color: var(--kolor-akcent);
+	}
+
+	.nawigacja__dodatki {
+		padding: 0;
+		border-top: 0;
+	}
+}
+
+/* Tablet: mniejsze odstępy, żeby nagłówek mieścił się w jednej linii. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+	.custom-logo {
+		height: 56px;
+	}
+
+	.nawigacja,
+	.js .nawigacja,
+	.nawigacja__dodatki {
+		gap: 0.5rem 1rem;
+	}
+
+	.nawigacja__lista {
+		gap: 1rem;
+	}
 }
 
 .tresc {
@@ -162,6 +318,17 @@ h3 {
 .przycisk:focus {
 	background: var(--kolor-akcent-ciemny);
 	color: #ffffff;
+}
+
+.przycisk--rezerwacja {
+	padding: 0.6rem 1.25rem;
+	background: var(--kolor-rezerwacja);
+	font-weight: 600;
+}
+
+.przycisk--rezerwacja:hover,
+.przycisk--rezerwacja:focus {
+	background: var(--kolor-rezerwacja-ciemny);
 }
 
 .komentarze {

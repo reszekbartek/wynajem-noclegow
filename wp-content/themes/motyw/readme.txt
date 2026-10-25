@@ -19,6 +19,7 @@ Struktura:
 * functions.php - obsługiwane funkcje WordPressa, menu, dołączanie stylów i skryptów
 * inc/dane-osrodka.php - dane ośrodka (adres, telefony, e-mail) w jednym miejscu
 * inc/konfiguracja.php - konfiguracja przy włączeniu motywu
+* inc/nawigacja.php - link do strony rezerwacji i menu domyślne
 * header.php, footer.php - nagłówek i stopka wspólne dla wszystkich stron
 * index.php - szablon awaryjny (lista wpisów, archiwa, wyszukiwanie)
 * singular.php - pojedyncza treść dowolnego typu, np. strona domku MotoPress
@@ -38,12 +39,25 @@ Po włączeniu motyw:
 
 Istniejące strony i menu pozostają bez zmian, więc motyw można bezpiecznie włączać ponownie.
 
+== Nagłówek ==
+
+* Menu główne pochodzi z Wygląd > Menu (lokalizacja "Menu główne"). Gdy żadne menu nie jest
+  przypisane, wyświetla się menu domyślne: Strona główna, Cennik, Kontakt.
+* Przycisk "Rezerwacja" prowadzi do pierwszej istniejącej z tych stron:
+  1. strona o adresie /rezerwacja/,
+  2. strona z wyszukiwarką terminów MotoPress [mphb_availability_search],
+  3. strona z listą domków MotoPress [mphb_rooms].
+  Gdy żadna z nich nie istnieje, przycisk jest ukryty. Aby wskazać inną stronę, wystarczy
+  utworzyć stronę o adresie /rezerwacja/.
+* Poniżej 768 px menu rozwija się przyciskiem. Bez JavaScriptu menu jest zawsze rozwinięte.
+
 == Copyright ==
 
 Motyw, (C) 2026 Przemysław Tomaszewski
 Motyw is distributed under the terms of the GNU GPL v2 or later.
 
-Dane kontaktowe i treści ośrodka pochodzą ze strony https://wiele.com.pl.
+Dane kontaktowe, treści i logo ośrodka (assets/img/logo-beaver.png) pochodzą ze strony
+https://wiele.com.pl i należą do Ośrodka Kolonijno-Wczasowego BEAVER.
 
 == Changelog ==
 
