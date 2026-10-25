@@ -27,6 +27,7 @@ Struktura:
 * index.php - szablon awaryjny (lista wpisów, archiwa, wyszukiwanie)
 * singular.php - pojedyncza treść dowolnego typu, np. strona domku MotoPress
 * page.php - zwykła podstrona, w tym strony MotoPress
+* page-kontakt.php - strona Kontakt: treść z edytora, dane kontaktowe z panelu i mapa
 * template-parts/tresc.php - treść strony używana przez page.php i singular.php
 * 404.php - strona "nie znaleziono"
 * comments.php - komentarze
