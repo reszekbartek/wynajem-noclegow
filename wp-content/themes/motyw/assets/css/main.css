@@ -421,7 +421,10 @@ h3 {
 	margin-top: 0.3rem;
 }
 
-/* Tabele: na telefonie przewijane w poziomie we własnym kontenerze, nie cała strona. */
+/*
+ * Tabele: dopasowują się do szerokości ekranu i zawijają tekst w komórkach.
+ * Gdy tabela mimo to się nie mieści, przewija się w poziomie sama, a nie cała strona.
+ */
 .wp-block-table {
 	margin: 1.5rem 0;
 	overflow-x: auto;
@@ -429,7 +432,6 @@ h3 {
 
 .wp-block-table table {
 	width: 100%;
-	min-width: 30rem;
 	border-collapse: collapse;
 }
 
@@ -444,6 +446,14 @@ h3 {
 .wp-block-table thead th {
 	background: var(--kolor-akcent);
 	color: #ffffff;
+}
+
+@media (max-width: 767.98px) {
+	.wp-block-table th,
+	.wp-block-table td {
+		padding: 0.5rem;
+		font-size: 0.9375rem;
+	}
 }
 
 .wp-block-table tbody tr:nth-child(even) {
