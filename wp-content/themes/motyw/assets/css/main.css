@@ -279,15 +279,67 @@ h3 {
 	padding: 2rem 0 3rem;
 }
 
+/* Stopka: na telefonie kolumny jedna pod drugą, od 768 px obok siebie. */
 .stopka {
-	padding: 1.5rem 0;
-	background: var(--kolor-tlo-jasne);
-	border-top: 1px solid var(--kolor-obramowanie);
+	background: var(--kolor-akcent-ciemny);
+	color: #ffffff;
 	font-size: 0.9375rem;
+}
+
+.stopka a {
+	color: #ffffff;
+}
+
+.stopka a:hover,
+.stopka a:focus {
+	color: #d6e8d9;
+}
+
+.stopka__kolumny {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+}
+
+.stopka__tytul {
+	margin: 0 0 0.75rem;
+	font-size: 1.0625rem;
+}
+
+.stopka__adres {
+	font-style: normal;
+}
+
+.stopka__lista {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.stopka__lista li + li {
+	margin-top: 0.4rem;
+}
+
+.stopka__lista a[href^="tel:"] {
+	white-space: nowrap;
+}
+
+.stopka__dol {
+	padding: 1rem 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	font-size: 0.875rem;
 }
 
 .stopka__prawa {
 	margin: 0;
+}
+
+@media (min-width: 768px) {
+	.stopka__kolumny {
+		grid-template-columns: 2fr 2fr 1fr;
+	}
 }
 
 /* ---------------------------------------------------------------
