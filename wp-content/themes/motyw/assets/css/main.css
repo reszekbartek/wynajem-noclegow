@@ -1,0 +1,230 @@
+/*
+ * Główne style motywu.
+ *
+ * 1. Zmienne
+ * 2. Podstawy
+ * 3. Układ: kontener, nagłówek, treść, stopka
+ * 4. Elementy wspólne
+ * 5. Klasy wymagane przez WordPress
+ */
+
+/* ---------------------------------------------------------------
+ * 1. Zmienne
+ * ------------------------------------------------------------- */
+:root {
+	--kolor-tekst: #1f2a24;
+	--kolor-tlo: #ffffff;
+	--kolor-tlo-jasne: #f3f6f1;
+	--kolor-akcent: #2f6b3f;
+	--kolor-akcent-ciemny: #234f2f;
+	--kolor-obramowanie: #d9e0d6;
+
+	--czcionka: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--szerokosc: 1100px;
+	--odstep: 1.5rem;
+}
+
+/* ---------------------------------------------------------------
+ * 2. Podstawy
+ * ------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: var(--czcionka);
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	color: var(--kolor-tekst);
+	background: var(--kolor-tlo);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: var(--kolor-akcent);
+}
+
+a:hover,
+a:focus {
+	color: var(--kolor-akcent-ciemny);
+}
+
+h1,
+h2,
+h3 {
+	line-height: 1.25;
+}
+
+/* ---------------------------------------------------------------
+ * 3. Układ
+ * ------------------------------------------------------------- */
+.kontener {
+	width: 100%;
+	max-width: var(--szerokosc);
+	margin: 0 auto;
+	padding: 0 var(--odstep);
+}
+
+.naglowek {
+	border-bottom: 1px solid var(--kolor-obramowanie);
+}
+
+.naglowek__wnetrze {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.naglowek__nazwa {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--kolor-tekst);
+	text-decoration: none;
+}
+
+.custom-logo {
+	display: block;
+	max-height: 80px;
+	width: auto;
+}
+
+.nawigacja__lista {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nawigacja__lista a {
+	color: var(--kolor-tekst);
+	text-decoration: none;
+}
+
+.nawigacja__lista a:hover,
+.nawigacja__lista a:focus,
+.nawigacja__lista .current-menu-item > a {
+	color: var(--kolor-akcent);
+}
+
+.tresc {
+	padding: 2rem 0 3rem;
+}
+
+.stopka {
+	padding: 1.5rem 0;
+	background: var(--kolor-tlo-jasne);
+	border-top: 1px solid var(--kolor-obramowanie);
+	font-size: 0.9375rem;
+}
+
+.stopka__prawa {
+	margin: 0;
+}
+
+/* ---------------------------------------------------------------
+ * 4. Elementy wspólne
+ * ------------------------------------------------------------- */
+.tytul-strony {
+	margin-top: 0;
+}
+
+.wpis + .wpis {
+	margin-top: 2rem;
+}
+
+.wpis__obrazek {
+	margin-bottom: var(--odstep);
+}
+
+.przycisk {
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	border-radius: 4px;
+	background: var(--kolor-akcent);
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.przycisk:hover,
+.przycisk:focus {
+	background: var(--kolor-akcent-ciemny);
+	color: #ffffff;
+}
+
+.komentarze {
+	margin-top: 3rem;
+}
+
+/* ---------------------------------------------------------------
+ * 5. Klasy wymagane przez WordPress
+ * ------------------------------------------------------------- */
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link:focus {
+	position: fixed !important;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 1000;
+	width: auto;
+	height: auto;
+	padding: 0.75rem 1rem;
+	margin: 0;
+	clip: auto;
+	background: var(--kolor-tlo);
+	color: var(--kolor-akcent);
+}
+
+.alignleft {
+	float: left;
+	margin: 0 var(--odstep) 1rem 0;
+}
+
+.alignright {
+	float: right;
+	margin: 0 0 1rem var(--odstep);
+}
+
+.aligncenter {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.wp-caption {
+	max-width: 100%;
+}
+
+.wp-caption-text,
+.gallery-caption {
+	font-size: 0.875rem;
+	color: #555555;
+}
+
+.sticky,
+.bypostauthor {
+	/* Klasy nadawane przez WordPress, bez dodatkowego wyglądu. */
+	display: block;
+}
