@@ -19,7 +19,9 @@ Struktura:
 * functions.php - obsługiwane funkcje WordPressa, menu, dołączanie stylów i skryptów
 * inc/dane-osrodka.php - dane ośrodka (adres, telefony, e-mail) w jednym miejscu, z wartościami domyślnymi
 * inc/customizer.php - sekcja "Dane ośrodka" w Wygląd > Dostosuj
-* inc/konfiguracja.php - konfiguracja przy włączeniu motywu
+* inc/strony.php - lista stron motywu i odczyt ich treści startowej
+* inc/konfiguracja.php - zakładanie stron i wstawianie treści startowej
+* patterns/ - treść startowa stron w blokach edytora (jeden plik na stronę)
 * inc/nawigacja.php - link do strony rezerwacji i menu domyślne
 * header.php, footer.php - nagłówek i stopka wspólne dla wszystkich stron
 * index.php - szablon awaryjny (lista wpisów, archiwa, wyszukiwanie)
@@ -28,7 +30,7 @@ Struktura:
 * template-parts/tresc.php - treść strony używana przez page.php i singular.php
 * 404.php - strona "nie znaleziono"
 * comments.php - komentarze
-* assets/ - style, skrypty i zdjęcia
+* assets/ - style (main.css także w edytorze, edytor.css tylko w edytorze), skrypty i zdjęcia
 
 == Konfiguracja przy włączeniu ==
 
@@ -39,6 +41,35 @@ Po włączeniu motyw:
 * tworzy "Menu główne" i przypisuje je do lokalizacji menu, jeśli żadne nie jest przypisane.
 
 Istniejące strony i menu pozostają bez zmian, więc motyw można bezpiecznie włączać ponownie.
+
+== Treść startowa stron ==
+
+Treść stron jest edytowana w edytorze WordPressa. Treść startowa (pierwsza wersja) jest
+w repozytorium, w pliku patterns/<adres-strony>.php, i trafia na serwer razem z motywem.
+
+Motyw zakłada strony z listy w inc/strony.php i wstawia do nich treść startową:
+
+* przy włączeniu motywu,
+* po deployu, który dodaje stronę do listy albo nowy plik w patterns/ - przy pierwszym
+  wejściu do panelu.
+
+Treść startowa trafia tylko do pustych stron, więc zmiany wprowadzone w edytorze nie są
+nadpisywane. Strona usunięta w panelu nie jest zakładana ponownie. Treść startowa każdej
+strony jest też dostępna w edytorze jako wzorzec w kategorii "Ośrodek BEAVER", więc można
+ją wstawić ponownie.
+
+Dodanie nowej podstrony:
+
+1. wpis w motyw_lista_stron() w inc/strony.php (adres => tytuł),
+2. plik patterns/<adres>.php z nagłówkiem wzorca (Title, Slug: motyw/<adres>,
+   Categories: motyw) i treścią w blokach.
+
+Po deployu motyw sam odświeża listę wzorców WordPressa, więc nowy wzorzec jest od razu
+widoczny w edytorze.
+
+Sekcje treści startowej to bloki "Grupa" z blokadą przenoszenia i usuwania:
+<!-- wp:group {"lock":{"move":true,"remove":true}} -->. Zawartość sekcji (teksty,
+zdjęcia, przyciski, wiersze tabel) pozostaje w pełni edytowalna.
 
 == Dane ośrodka ==
 

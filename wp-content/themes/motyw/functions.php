@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require get_theme_file_path( 'inc/dane-osrodka.php' );
 require get_theme_file_path( 'inc/customizer.php' );
+require get_theme_file_path( 'inc/strony.php' );
 require get_theme_file_path( 'inc/konfiguracja.php' );
 require get_theme_file_path( 'inc/nawigacja.php' );
 
@@ -44,6 +45,43 @@ add_action( 'after_setup_theme', function() {
 
 	register_nav_menus( array(
 		'primary' => __( 'Menu główne', 'motyw' ),
+	) );
+
+	// Edytor bloków: style motywu w edytorze, szerokie bloki i kolory ośrodka do wyboru.
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'editor-styles' );
+	add_editor_style( array( 'assets/css/main.css', 'assets/css/edytor.css' ) );
+	add_theme_support( 'editor-color-palette', array(
+		array(
+			'name'  => __( 'Zielony', 'motyw' ),
+			'slug'  => 'zielony',
+			'color' => '#2f6b3f',
+		),
+		array(
+			'name'  => __( 'Ciemnozielony', 'motyw' ),
+			'slug'  => 'ciemnozielony',
+			'color' => '#234f2f',
+		),
+		array(
+			'name'  => __( 'Pomarańczowy', 'motyw' ),
+			'slug'  => 'pomaranczowy',
+			'color' => '#c2540a',
+		),
+		array(
+			'name'  => __( 'Jasne tło', 'motyw' ),
+			'slug'  => 'jasne-tlo',
+			'color' => '#f3f6f1',
+		),
+		array(
+			'name'  => __( 'Tekst', 'motyw' ),
+			'slug'  => 'tekst',
+			'color' => '#1f2a24',
+		),
+		array(
+			'name'  => __( 'Biały', 'motyw' ),
+			'slug'  => 'bialy',
+			'color' => '#ffffff',
+		),
 	) );
 } );
 

@@ -5,7 +5,11 @@
  * 2. Podstawy
  * 3. Układ: kontener, nagłówek, treść, stopka
  * 4. Elementy wspólne
- * 5. Klasy wymagane przez WordPress
+ * 5. Treść z edytora bloków
+ * 6. Klasy wymagane przez WordPress
+ *
+ * Plik jest ładowany również w edytorze (add_editor_style), żeby treść
+ * w edytorze wyglądała tak samo jak na stronie.
  */
 
 /* ---------------------------------------------------------------
@@ -277,6 +281,8 @@ h3 {
 
 .tresc {
 	padding: 2rem 0 3rem;
+	/* Bloki na pełną szerokość (alignfull) nie powodują przewijania w poziomie. */
+	overflow-x: clip;
 }
 
 /* Stopka: na telefonie kolumny jedna pod drugą, od 768 px obok siebie. */
@@ -306,6 +312,7 @@ h3 {
 .stopka__tytul {
 	margin: 0 0 0.75rem;
 	font-size: 1.0625rem;
+	color: inherit;
 }
 
 .stopka__adres {
@@ -388,7 +395,120 @@ h3 {
 }
 
 /* ---------------------------------------------------------------
- * 5. Klasy wymagane przez WordPress
+ * 5. Treść z edytora bloków
+ * ------------------------------------------------------------- */
+h2 {
+	margin: 2.5rem 0 1rem;
+	font-size: 1.625rem;
+	color: var(--kolor-akcent-ciemny);
+}
+
+h3 {
+	margin: 2rem 0 0.75rem;
+	font-size: 1.25rem;
+}
+
+.wpis__tresc > :first-child {
+	margin-top: 0;
+}
+
+.wpis__tresc ul,
+.wpis__tresc ol {
+	padding-left: 1.25rem;
+}
+
+.wpis__tresc li + li {
+	margin-top: 0.3rem;
+}
+
+/* Tabele: na telefonie przewijane w poziomie we własnym kontenerze, nie cała strona. */
+.wp-block-table {
+	margin: 1.5rem 0;
+	overflow-x: auto;
+}
+
+.wp-block-table table {
+	width: 100%;
+	min-width: 30rem;
+	border-collapse: collapse;
+}
+
+.wp-block-table th,
+.wp-block-table td {
+	padding: 0.6rem 0.8rem;
+	border: 1px solid var(--kolor-obramowanie);
+	text-align: left;
+	vertical-align: top;
+}
+
+.wp-block-table thead th {
+	background: var(--kolor-akcent);
+	color: #ffffff;
+}
+
+.wp-block-table tbody tr:nth-child(even) {
+	background: var(--kolor-tlo-jasne);
+}
+
+.wp-block-table figcaption,
+.wp-block-image figcaption {
+	font-size: 0.875rem;
+	color: #555555;
+}
+
+/* Przyciski: kolor akcentu, chyba że w edytorze wybrano inny kolor z palety. */
+.wp-block-button__link {
+	padding: 0.75rem 1.5rem;
+	border-radius: 4px;
+	background: var(--kolor-akcent);
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.wp-block-button__link:hover,
+.wp-block-button__link:focus {
+	background: var(--kolor-akcent-ciemny);
+	color: #ffffff;
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+	border: 2px solid currentColor;
+	background: transparent;
+	color: var(--kolor-akcent);
+}
+
+.wp-block-image img {
+	border-radius: 4px;
+}
+
+/* Sekcje z tłem wybranym w edytorze. */
+.wp-block-group.has-background {
+	padding: 2rem var(--odstep);
+	border-radius: 4px;
+}
+
+.wp-block-columns {
+	gap: 2rem;
+}
+
+/* Szerokie i pełnoekranowe bloki wychodzą poza kontener treści. */
+.alignfull {
+	margin-right: calc(50% - 50vw);
+	margin-left: calc(50% - 50vw);
+	max-width: none;
+	width: auto;
+}
+
+@media (min-width: 1340px) {
+	.alignwide {
+		margin-right: -100px;
+		margin-left: -100px;
+		max-width: none;
+	}
+}
+
+/* ---------------------------------------------------------------
+ * 6. Klasy wymagane przez WordPress
  * ------------------------------------------------------------- */
 .screen-reader-text {
 	position: absolute !important;

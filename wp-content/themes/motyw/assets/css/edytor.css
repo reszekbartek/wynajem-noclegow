@@ -1,0 +1,15 @@
+/*
+ * Style tylko dla edytora bloków. Szerokość treści w edytorze odpowiada
+ * szerokości treści na stronie (kontener 1100 px minus marginesy).
+ */
+.wp-block {
+	max-width: 1052px;
+}
+
+.wp-block[data-align="wide"] {
+	max-width: 1252px;
+}
+
+.wp-block[data-align="full"] {
+	max-width: none;
+}
