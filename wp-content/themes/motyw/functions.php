@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require get_theme_file_path( 'inc/dane-osrodka.php' );
 require get_theme_file_path( 'inc/customizer.php' );
 require get_theme_file_path( 'inc/strony.php' );
+require get_theme_file_path( 'inc/bloki.php' );
 require get_theme_file_path( 'inc/konfiguracja.php' );
 require get_theme_file_path( 'inc/nawigacja.php' );
 
@@ -92,7 +93,12 @@ add_action( 'wp_enqueue_scripts', function() {
 	$wersja = wp_get_theme()->get( 'Version' );
 
 	wp_enqueue_style( 'motyw', get_theme_file_uri( 'assets/css/main.css' ), array(), $wersja );
+	wp_enqueue_style( 'motyw-strona', get_theme_file_uri( 'assets/css/strona.css' ), array( 'motyw' ), $wersja );
 	wp_enqueue_script( 'motyw', get_theme_file_uri( 'assets/js/main.js' ), array(), $wersja, array(
+		'in_footer' => true,
+		'strategy'  => 'defer',
+	) );
+	wp_enqueue_script( 'motyw-slider', get_theme_file_uri( 'assets/js/slider.js' ), array(), $wersja, array(
 		'in_footer' => true,
 		'strategy'  => 'defer',
 	) );

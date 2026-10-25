@@ -517,6 +517,78 @@ h3 {
 	}
 }
 
+/* Tekst na zdjęciu (blok „Okładka”) zawsze w kolorze ustawionym przez okładkę. */
+.wp-block-cover h2,
+.wp-block-cover h3,
+.wp-block-cover p {
+	color: inherit;
+}
+
+/* Strona główna: slider przylega do nagłówka, sekcje z odstępami. */
+.home .tresc {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.strona-glowna > * {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.strona-glowna > * + * {
+	margin-top: 3.5rem;
+}
+
+.strona-glowna > .alignfull:last-child {
+	margin-bottom: 0;
+}
+
+.slajd__tytul {
+	margin: 0 0 1rem;
+	font-size: clamp(2rem, 6vw, 4.5rem);
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.slajd__tekst {
+	max-width: 46rem;
+	margin: 0 auto 1.5rem;
+	font-size: clamp(1.0625rem, 2.2vw, 1.5rem);
+	text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.strona-glowna h1 {
+	margin-bottom: 1.5rem;
+	font-size: clamp(1.875rem, 4vw, 2.75rem);
+}
+
+.strona-glowna .wp-block-columns + .wp-block-columns {
+	margin-top: 2rem;
+}
+
+/* Zdjęcia w kolumnach (np. „Baza noclegowa”) w jednakowych proporcjach, żeby tytuły były w jednej linii. */
+.strona-glowna .wp-block-columns:not(.partnerzy) .wp-block-image img {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.strona-glowna .wp-block-column h3 {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.strona-glowna .wp-block-media-text + .wp-block-media-text {
+	margin-top: 0;
+}
+
+.strona-glowna .wp-block-media-text__content {
+	padding: 2rem;
+}
+
+.partnerzy img {
+	max-width: 220px;
+}
+
 /* Strona Kontakt: treść z edytora i dane kontaktowe obok siebie, mapa pod spodem. */
 .kontakt__kolumny {
 	display: grid;

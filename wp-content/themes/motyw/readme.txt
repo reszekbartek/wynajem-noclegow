@@ -23,15 +23,18 @@ Struktura:
 * inc/konfiguracja.php - zakładanie stron i wstawianie treści startowej
 * patterns/ - treść startowa stron w blokach edytora (jeden plik na stronę)
 * inc/nawigacja.php - link do strony rezerwacji i menu domyślne
+* inc/bloki.php - style bloków do wyboru w edytorze: "Slider" (grupa) i "Pasek przewijany" (galeria)
 * header.php, footer.php - nagłówek i stopka wspólne dla wszystkich stron
 * index.php - szablon awaryjny (lista wpisów, archiwa, wyszukiwanie)
 * singular.php - pojedyncza treść dowolnego typu, np. strona domku MotoPress
+* front-page.php - strona główna: treść z edytora bez tytułu strony
 * page.php - zwykła podstrona, w tym strony MotoPress
 * page-kontakt.php - strona Kontakt: treść z edytora, dane kontaktowe z panelu i mapa
 * template-parts/tresc.php - treść strony używana przez page.php i singular.php
 * 404.php - strona "nie znaleziono"
 * comments.php - komentarze
-* assets/ - style (main.css także w edytorze, edytor.css tylko w edytorze), skrypty i zdjęcia
+* assets/ - style (main.css także w edytorze, edytor.css tylko w edytorze, strona.css tylko na stronie),
+  skrypty (main.js - menu, slider.js - slider) i zdjęcia (glowna/ - zdjęcia strony głównej)
 
 == Konfiguracja przy włączeniu ==
 
@@ -79,6 +82,16 @@ Wygląd > Dostosuj > Dane ośrodka. Zmiana jest widoczna jednocześnie w nagłó
 i na stronie Kontakt. Pola są wypełnione wartościami domyślnymi z inc/dane-osrodka.php,
 a wyczyszczenie pola przywraca wartość domyślną. Niepoprawny e-mail, numer telefonu lub adres
 strony nie zostanie zapisany.
+
+== Slider i pasek zdjęć ==
+
+* Slider: blok "Grupa" ze stylem "Slider" (panel bloku > Style), w którym każdy blok "Okładka"
+  jest jednym slajdem. Slajd dodaje się, duplikując okładkę. Na stronie są strzałki, kropki
+  i automatyczne przewijanie co 6 s (zatrzymywane po najechaniu kursorem, wyłączone przy
+  ustawieniu "ogranicz ruch"). Bez JavaScriptu slajdy wyświetlają się jeden pod drugim.
+* Pasek przewijany: blok "Galeria" ze stylem "Pasek przewijany" - zdjęcia w jednym rzędzie
+  przewijanym w poziomie, powiększane po kliknięciu.
+* W edytorze slajdy i zdjęcia są ułożone jeden pod drugim, żeby łatwo je poprawiać.
 
 == Nagłówek ==
 

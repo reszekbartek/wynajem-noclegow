@@ -49,6 +49,17 @@ function motyw_tresc_startowa( $slug ) {
 	return trim( ob_get_clean() );
 }
 
+/**
+ * Adres zdjęcia motywu w formacie WebP, np. motyw_obraz( 'glowna/jezioro' ) dla assets/img/glowna/jezioro.webp.
+ * Używane w plikach treści startowej (patterns/).
+ *
+ * @param string $nazwa Ścieżka w assets/img/ bez rozszerzenia.
+ * @return string
+ */
+function motyw_obraz( $nazwa ) {
+	return get_theme_file_uri( 'assets/img/' . $nazwa . '.webp' );
+}
+
 add_action( 'init', function() {
 	register_block_pattern_category( 'motyw', array(
 		'label' => __( 'Ośrodek BEAVER', 'motyw' ),
