@@ -1,0 +1,150 @@
+/*
+ * Style ładowane tylko na stronie (nie w edytorze): slider i pasek zdjęć.
+ * W edytorze slajdy i zdjęcia zostają ułożone jeden pod drugim, żeby łatwo je poprawiać.
+ */
+
+/* ---------------------------------------------------------------
+ * Slider (grupa ze stylem „Slider”, slajdy to bloki „Okładka”)
+ * ------------------------------------------------------------- */
+.slider--aktywny {
+	position: relative;
+}
+
+.slider__tor {
+	display: flex;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+}
+
+.slider__tor::-webkit-scrollbar {
+	display: none;
+}
+
+/* Boczne marginesy zostawiają miejsce na strzałki, żeby nie zasłaniały tekstu. */
+.slider__tor > .wp-block-cover {
+	flex: 0 0 100%;
+	margin: 0 !important;
+	padding-right: 5.5rem;
+	padding-left: 5.5rem;
+	scroll-snap-align: start;
+}
+
+.slider__strzalka {
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	width: 48px;
+	height: 48px;
+	margin-top: -24px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.45);
+	color: #ffffff;
+	font-size: 2rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.slider__strzalka:hover,
+.slider__strzalka:focus-visible {
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.slider__strzalka--poprzedni {
+	left: 1rem;
+}
+
+.slider__strzalka--nastepny {
+	right: 1rem;
+}
+
+.slider__kropki {
+	position: absolute;
+	bottom: 1rem;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.slider__kropka {
+	width: 12px;
+	height: 12px;
+	padding: 0;
+	border: 2px solid #ffffff;
+	border-radius: 50%;
+	background: transparent;
+	cursor: pointer;
+}
+
+.slider__kropka[aria-current="true"] {
+	background: #ffffff;
+}
+
+/*
+ * Na telefonie strzałki są na dole, po obu stronach kropek, żeby nie zasłaniały tekstu slajdu.
+ * Slajdy przewija się też palcem.
+ */
+@media (max-width: 767.98px) {
+	.slider__tor > .wp-block-cover {
+		padding-right: 1rem;
+		padding-bottom: 4rem;
+		padding-left: 1rem;
+	}
+
+	.slider__strzalka {
+		top: auto;
+		bottom: 0.6rem;
+		width: 36px;
+		height: 36px;
+		margin-top: 0;
+		font-size: 1.5rem;
+	}
+
+	.slider__strzalka--poprzedni {
+		left: 0.75rem;
+	}
+
+	.slider__strzalka--nastepny {
+		right: 0.75rem;
+	}
+
+	.slider__kropki {
+		bottom: 1.25rem;
+	}
+}
+
+/* ---------------------------------------------------------------
+ * Pasek zdjęć (galeria ze stylem „Pasek przewijany”)
+ * ------------------------------------------------------------- */
+.wp-block-gallery.has-nested-images.is-style-pasek {
+	flex-wrap: nowrap;
+	gap: 0;
+	overflow-x: auto;
+	scroll-snap-type: x proximity;
+}
+
+.wp-block-gallery.has-nested-images.is-style-pasek figure.wp-block-image:not(#individual-image) {
+	flex: 0 0 auto;
+	width: 20%;
+	min-width: 200px;
+	margin: 0;
+	scroll-snap-align: start;
+}
+
+.wp-block-gallery.has-nested-images.is-style-pasek figure.wp-block-image img {
+	aspect-ratio: 1;
+	border-radius: 0;
+	object-fit: cover;
+}
+
+@media (max-width: 767.98px) {
+	.wp-block-gallery.has-nested-images.is-style-pasek figure.wp-block-image:not(#individual-image) {
+		width: 50%;
+		min-width: 0;
+	}
+}
